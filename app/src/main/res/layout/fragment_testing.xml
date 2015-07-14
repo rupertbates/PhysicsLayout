@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/square_size"
             android:layout_height="@dimen/square_size"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_launcher" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/square_size"
             android:layout_height="@dimen/square_size"
             android:layout_alignParentRight="true"
@@ -31,14 +31,14 @@
             app:border_color="#FF000000"
             app:border_width="2dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/square_size"
             android:layout_height="@dimen/square_size"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:src="@drawable/ic_launcher" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/square_size"
             android:layout_height="@dimen/square_size"
             android:layout_alignParentBottom="true"

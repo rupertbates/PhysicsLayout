@@ -1,20 +1,40 @@
 package com.jawnnypoo.physicslayout.sample;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import com.jawnnypoo.physicslayout.PhysicsRelativeLayout;
-import com.squareup.picasso.Picasso;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * This may seem familiar....
  * Created by Jawn on 5/5/2015.
  */
-public class TypicalFragment extends Fragment{
+public class TypicalFragment extends Fragment {
+    String[] values = new String[]{"Art"
+            , "Culture"
+            , "Performance art"
+            , "Art and design"
+            , "Women"
+            , "Photography"
+            , "Superhero movies"
+            , "Culture"
+            , "Film"
+            , "Marvel"
+            , "DC Comics"
+            , "Science fiction and fantasy"
+            , "Ant-Man"
+            , "X-Men Origins: Wolverine"
+            , "Architecture"
+            , "Art and design"
+            , "London"
+            , "Culture"
+            , "Cities"};
 
     public static TypicalFragment newInstance() {
         TypicalFragment fragment = new TypicalFragment();
@@ -23,16 +43,8 @@ public class TypicalFragment extends Fragment{
         return fragment;
     }
 
-    PhysicsRelativeLayout mainLayout;
+    PhysicsListView listView;
 
-
-    private final View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            mainLayout.getPhysics().enablePhysics();
-            mainLayout.getPhysics().enableFling();
-        }
-    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,29 +54,52 @@ public class TypicalFragment extends Fragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mainLayout = (PhysicsRelativeLayout) view;
-        ImageView image = (ImageView) view.findViewById(R.id.image);
-        Picasso.with(getActivity())
-                .load("http://lorempixel.com/1600/900/cats/4")
-                .placeholder(R.drawable.ic_launcher)
-                .into(image);
+        listView = (PhysicsListView) view;
+        listView.setAdapter(new BubbleAdapter(getActivity(), values));
+    }
 
-        ImageView profilePic = (ImageView) view.findViewById(R.id.profile_pic);
-        Picasso.with(getActivity())
-                .load("http://lorempixel.com/200/200/cats/1")
-                .placeholder(R.drawable.ic_launcher)
-                .into(profilePic);
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
-        ImageView profilePicOp = (ImageView) view.findViewById(R.id.profile_pic_op);
-        Picasso.with(getActivity())
-                .load("http://lorempixel.com/1600/900/cats/4")
-                .fit()
-                .centerCrop()
-                .placeholder(R.drawable.ic_launcher)
-                .into(profilePicOp);
+    static class BubbleAdapter extends BaseAdapter {
+        private final Context context;
+        private String[] values;
 
-        View fab = mainLayout.findViewById(R.id.fab);
-        fab.setOnClickListener(onClickListener);
+        public BubbleAdapter(Context context, String[] values) {
+            this.context = context;
+            this.values = values;
+        }
 
+        @Override
+        public int getCount() {
+            return values.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TextView child = new SquareTextView(context);
+            child.setText(values[position]);
+            child.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.circle));
+            int max = 300;
+            int padding = 20;
+            child.setPadding(padding, padding, padding, padding);
+            child.setMaxWidth(max);
+            child.setMaxHeight(max);
+            child.setGravity(Gravity.CENTER);
+            child.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            return child;
+        }
     }
 }

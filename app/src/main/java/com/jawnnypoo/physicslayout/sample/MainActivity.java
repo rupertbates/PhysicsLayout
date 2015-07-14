@@ -39,9 +39,9 @@ public class MainActivity extends BaseActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return TestingFragment.newInstance();
-                case 1:
                     return TypicalFragment.newInstance();
+                case 1:
+                    return TestingFragment.newInstance();
                 default:
                     return null;
             }

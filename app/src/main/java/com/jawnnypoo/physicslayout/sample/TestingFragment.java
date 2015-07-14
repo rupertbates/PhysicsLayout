@@ -110,7 +110,7 @@ public class TestingFragment extends Fragment {
                 .setShapeType(PhysicsConfig.ShapeType.CIRCLE)
                 .setDensity(1.2f)
                 .setFriction(1.2f)
-                .setRestitution(1.2f)
+                .setRestitution(0.8f)
                 .build();
         Physics.setPhysicsConfig(circleView, config);
 

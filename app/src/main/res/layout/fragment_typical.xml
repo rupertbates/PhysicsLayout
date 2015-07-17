@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.jawnnypoo.physicslayout.sample.PhysicsListView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:physics="true">
-</com.jawnnypoo.physicslayout.sample.PhysicsListView>
+    android:layout_height="0dp">
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sections you've been reading"
+        android:textColor="@android:color/white"/>
+    <com.jawnnypoo.physicslayout.sample.PhysicsListView
+        android:id="@+id/list"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        app:physics="false"/>
+</LinearLayout>

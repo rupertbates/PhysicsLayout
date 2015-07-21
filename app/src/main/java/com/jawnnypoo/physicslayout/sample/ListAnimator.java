@@ -30,10 +30,6 @@ public class ListAnimator {
     public void runCloseListAnimation() {
             runListAnimation(listContainer.getWidth(), button.getWidth(), listContainer.getHeight(), button.getHeight(), new StartAndEndListener() {
                 @Override
-                public void onAnimationStart(Animator animation) {
-                }
-
-                @Override
                 public void onAnimationEnd(Animator animation) {
                     button.setVisibility(View.VISIBLE);
                     title.setVisibility(View.GONE);

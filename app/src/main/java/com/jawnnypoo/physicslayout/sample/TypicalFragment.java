@@ -61,7 +61,7 @@ public class TypicalFragment extends Fragment implements View.OnClickListener, L
         title = view.findViewById(R.id.title);
         listView = (PhysicsListView) view.findViewById(R.id.list);
         listView.setAdapter(new BubbleAdapter(getActivity(), new BubbleRowSorter(32).getRows(values), this));
-        animator = new ListAnimator(getActivity(), button, listContainer, listView, title, this);
+        animator = new ListAnimator(button, listContainer, listView, title, this);
     }
 
     @Override
@@ -79,6 +79,8 @@ public class TypicalFragment extends Fragment implements View.OnClickListener, L
 
     @Override
     public void OnAnimationEnd() {
+        //listView.getPhysics().enablePhysics();
+        //listView.getPhysics().enableFling();
         listView.setAdapter(new BubbleAdapter(getActivity(), new BubbleRowSorter(32).getRows(values), this));
     }
 }
